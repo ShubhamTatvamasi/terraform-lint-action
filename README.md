@@ -1,7 +1,6 @@
 # Terraform Lint Action
 
-
-```bash
+```yaml
 name: Terraform Lint
 
 on: [push, pull_request]
