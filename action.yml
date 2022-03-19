@@ -1,0 +1,15 @@
+name: "Terraform Lint Action"
+description: "Terraform Lint Action"
+icon: "check"
+color: "purple"
+
+runs:
+  using: "composite"
+  steps:
+
+    - shell: bash
+      run: |
+        if [[ -n "$(terraform fmt -check -recursive -diff)" ]]; then
+          echo "Some terraform files need be formatted, run 'terraform fmt' to fix"
+          exit 1
+        fi
