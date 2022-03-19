@@ -14,6 +14,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Terraform LocalStack
+    - name: Terraform Lint
       uses: ShubhamTatvamasi/terraform-lint-action@master
 ```
