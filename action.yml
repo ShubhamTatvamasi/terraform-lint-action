@@ -23,12 +23,10 @@ runs:
           terraform fmt -check -recursive -diff || true
           echo "${TPUT_BLUE}${LINE}"
 
-          echo "${TPUT_BLUE}${LINE}"
           echo "${TPUT_YELLOW}These terraform files need be formatted:"
           terraform fmt -check -recursive || true
           echo "${TPUT_BLUE}${LINE}"
 
-          echo "${TPUT_BLUE}${LINE}"
           echo "${TPUT_YELLOW}Fix the format by running:"
           echo "terraform fmt -recursive"
           echo "${TPUT_BLUE}${LINE}"
