@@ -38,6 +38,6 @@ runs:
 
           exit 1
         else
-          echo -n "${TPUT_GREEN}Success! "
-          echo "${TPUT_WHITE}The format is correct."
+          echo -n "${TPUT_GREEN}Success!"
+          echo "${TPUT_WHITE} The format is correct."
         fi
