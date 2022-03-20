@@ -20,12 +20,12 @@ runs:
         if [[ -n "$(terraform fmt -check -recursive)" ]]; then          
           echo "${TPUT_BLUE}${LINE}"
           echo "${TPUT_YELLOW}These changes required:"
-          terraform fmt -check -recursive -diff
+          terraform fmt -check -recursive -diff || true
           echo "${TPUT_BLUE}${LINE}"
 
           echo "${TPUT_BLUE}${LINE}"
           echo "${TPUT_YELLOW}These terraform files need be formatted:"
-          terraform fmt -check -recursive
+          terraform fmt -check -recursive || true
           echo "${TPUT_BLUE}${LINE}"
 
           echo "${TPUT_BLUE}${LINE}"
