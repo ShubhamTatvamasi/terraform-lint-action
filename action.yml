@@ -16,22 +16,19 @@ runs:
         TPUT_YELLOW=$(tput setaf 3)
         TPUT_BLUE=$(tput setaf 6)
         LINE="${TPUT_BLUE}=================================="
-
         if [[ -n "$(terraform fmt -check -recursive)" ]]; then          
           echo "${LINE}"
           echo "${TPUT_YELLOW}These changes required:"
           terraform fmt -check -recursive -diff || true
           echo "${LINE}"
-
           echo "${TPUT_YELLOW}These terraform files need be formatted:"
           terraform fmt -check -recursive || true
           echo "${LINE}"
-
           echo "${TPUT_YELLOW}Fix the format by running:"
           echo "terraform fmt -recursive"
           echo "${LINE}"
-
           exit 1
         else
-          echo "${TPUT_GREEN}Success!"
+          echo -n "${TPUT_GREEN}Success! "
+          echo "The format is correct."
         fi
