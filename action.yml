@@ -8,8 +8,32 @@ runs:
   steps:
 
     - shell: bash
+      env:
+        TERM: xterm
+        LINE: ==================================
+
       run: |
-        if [[ -n "$(terraform fmt -check -recursive -diff)" ]]; then
-          echo "Some terraform files need be formatted, run 'terraform fmt' to fix"
+        TPUT_BLUE=$(tput setaf 6)
+        TPUT_YELLOW=$(tput setaf 3)
+        TPUT_GREEN=$(tput setaf 2)
+
+        if [[ -n "$(terraform fmt -check -recursive)" ]]; then          
+          echo "${TPUT_BLUE}${LINE}"
+          echo "${TPUT_YELLOW}These changes required:"
+          terraform fmt -check -recursive -diff
+          echo "${TPUT_BLUE}${LINE}"
+
+          echo "${TPUT_BLUE}${LINE}"
+          echo "${TPUT_YELLOW}These terraform files need be formatted:"
+          terraform fmt -check -recursive
+          echo "${TPUT_BLUE}${LINE}"
+
+          echo "${TPUT_BLUE}${LINE}"
+          echo "${TPUT_YELLOW}Fix the format by running:"
+          echo "terraform fmt -recursive"
+          echo "${TPUT_BLUE}${LINE}"
+
           exit 1
+        else
+          echo "${TPUT_GREEN}Success!"
         fi
