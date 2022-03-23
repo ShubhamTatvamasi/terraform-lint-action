@@ -14,5 +14,5 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Terraform Lint
-      uses: ShubhamTatvamasi/terraform-lint-action@master
+      uses: ShubhamTatvamasi/terraform-lint-action@v1
 ```
